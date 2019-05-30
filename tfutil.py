@@ -713,8 +713,8 @@ class Network:
     def print_layers(self, title=None, hide_layers_with_no_params=False):
         if title is None: title = self.name
         print()
-        print('%-28s%-12s%-24s%-24s' % (title, 'Params', 'OutputShape', 'WeightShape'))
-        print('%-28s%-12s%-24s%-24s' % (('---',) * 4))
+        print('%-40s%-12s%-24s%-24s' % (title, 'Params', 'OutputShape', 'WeightShape'))
+        print('%-40s%-12s%-24s%-24s' % (('---',) * 4))
 
         total_params = 0
         for layer_name, layer_output, layer_trainables in self.list_layers():
@@ -724,14 +724,14 @@ class Network:
             if hide_layers_with_no_params and num_params == 0:
                 continue
 
-            print('%-28s%-12s%-24s%-24s' % (
+            print('%-40s%-12s%-24s%-24s' % (
                 layer_name,
                 num_params if num_params else '-',
                 layer_output.shape,
                 weights[0].shape if len(weights) == 1 else '-'))
 
-        print('%-28s%-12s%-24s%-24s' % (('---',) * 4))
-        print('%-28s%-12s%-24s%-24s' % ('Total', total_params, '', ''))
+        print('%-40s%-12s%-24s%-24s' % (('---',) * 4))
+        print('%-40s%-12s%-24s%-24s' % ('Total', total_params, '', ''))
         print()
 
     # Construct summary ops to include histograms of all trainable parameters in TensorBoard.
